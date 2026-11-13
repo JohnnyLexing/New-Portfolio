@@ -44,10 +44,15 @@
                     <button class="filter-btn" data-filter="web">Web Development</button>
                     <button class="filter-btn" data-filter="ui">UI/UX Design</button>
                     <button class="filter-btn" data-filter="wordpress">WordPress</button>
+                    <button class="filter-btn" data-filter="graphic">Graphic Design</button>
                 </div>
             </div>
         </section>
-
+       
+<div class="graphic-lightbox" id="graphic-lightbox" aria-hidden="true">
+    <button class="graphic-lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="">
+</div>
         <section class="projects-grid">
             <div class="container">
 
@@ -165,6 +170,34 @@
                     </div>
                 </article>
 
+ 
+<section class="graphic-section" id="graphic">
+    
+    <div class="container">
+        <h2 class="graphic-title">Graphic Design</h2>
+        <p class="graphic-sub">A selection of my posters  and flyers</p>
+        <div class="graphic-grid">
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design1.png" alt="Graphic design 1" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design2.png" alt="Graphic design 2" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design3.png" alt="Graphic design 3" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design4.png" alt="Graphic design 4" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design5.png" alt="Graphic design 5" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+            <figure class="graphic-item">
+                <img src="/anima/graphic/design6.png" alt="Graphic design 6" loading="lazy" onerror="this.onerror=null;this.src='/anima/graphic/placeholder.svg';">
+            </figure>
+        </div>
+    </div>
+</section>
 
 
                 <article class="project-card ui" data-category="ui">
@@ -239,6 +272,24 @@
     </footer>
 
     <script>
+      
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.getElementById('graphic');
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const f = this.getAttribute('data-filter');
+                section.style.display = (f === 'all' || f === 'graphic') ? 'block' : 'none';
+            });
+        });
+        const box = document.getElementById('graphic-lightbox');
+        const big = box.querySelector('img');
+        document.querySelectorAll('.graphic-item img').forEach(img => {
+            img.addEventListener('click', () => { big.src = img.src; box.classList.add('open'); });
+        });
+        box.addEventListener('click', () => box.classList.remove('open'));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
+    });
+
         // Simple script for theme toggle and current year
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year

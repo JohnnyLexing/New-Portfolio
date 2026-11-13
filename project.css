@@ -345,7 +345,88 @@ nav ul li a.active::after {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* ===== Graphic Design section ===== */
+.graphic-section { padding: 0 0 80px; }
 
+.graphic-title {
+    font-size: 2.2rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.graphic-sub {
+    text-align: center;
+    color: var(--light-text);
+    margin-bottom: 40px;
+}
+
+.graphic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.graphic-item {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    aspect-ratio: 1 / 1;
+}
+
+.graphic-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.graphic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    display: block;
+}
+
+.graphic-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    cursor: zoom-out;
+}
+
+.graphic-lightbox.open { display: flex; }
+
+.graphic-lightbox img {
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: 8px;
+}
+
+.graphic-lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .graphic-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .graphic-grid { grid-template-columns: 1fr; }
+}
 .project-footer {
     background-color: var(--bg-color--);
     padding: 60px 0 0;
